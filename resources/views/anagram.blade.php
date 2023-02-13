@@ -19,7 +19,9 @@
             </center>
                 <form action="{{url('getAnagram')}}" method="post">  
                 @csrf  
-                <input type="text" name="ana" id="anagram" placeholder="ex : adam,mada,makan,aknam,kita,aku"  class="form-control" placeholder="Ketik nama karakter yang ingin di cari">                                                    
+                <input type="text" name="ana" id="anagram" placeholder="ex : adam,mada,makan,aknam,kita,aku"  class="form-control" placeholder="Ketik nama karakter yang ingin di cari">                           
+                <span>Note : No space between word and comma</span>   
+                <br>                      
                 <button class="mt-3 btn btn-primary" type="submit">Generate</button>
                 <br>
                 </form>

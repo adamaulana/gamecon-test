@@ -54,7 +54,7 @@ class MarvelController extends Controller
                 $res['results'][$i]['id'] = $src['results'][$i]['id'];                
                 $res['results'][$i]['nama'] = $src['results'][$i]['name'];                
                 $res['results'][$i]['deskripsi'] = $src['results'][$i]['description'];                
-                $res['results'][$i]['urls'] = $src['results'][$i]['urls'];                
+                $res['results'][$i]['urls'] = $src['results'][$i]['urls'];                   
             }
         }else{
             $res['keyword'] = $b['keyword'];
@@ -74,7 +74,26 @@ class MarvelController extends Controller
             }
         }
 
-        dd($res);
+        $results =  [];
+        if(empty($b['sort'])){
+            $results = $res;
+        }else{
+            if($b['sort'] == 'asc'){
+                foreach ($res['results'] as $key => $row)
+                {
+                    $results[$key] = $row;                
+                }
+                array_multisort($results, SORT_ASC, $res['results']);
+            }elseif($b['sort'] == 'desc'){
+                foreach ($res['results'] as $key => $row)
+                {
+                    $results[$key] = $row;                
+                }
+                array_multisort($results, SORT_DESC, $res['results']);            
+            }
+        }
+            
+        dd($results);
     }
 
 }
